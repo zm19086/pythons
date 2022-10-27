@@ -55,3 +55,44 @@ print(kato.result())
 print(ito.result())
 print(kondo.result())
 print(ando.result())
+
+# 継承
+class animalBaseClass:
+  def __init__(self, num):
+    self.animallegs = num
+  def walk(self):
+    print('歩く')
+  def cry(self):
+    print('なく')
+  def getLegsNum(self):
+    print(self.animallegs)
+
+class dogClass(animalBaseClass):
+  def __init__(self):
+    print('犬です')
+
+class catClass(animalBaseClass):
+  def __init__(self, num):
+    self.animallegs = num
+    super().__init__(num)
+    print('猫です')
+  def cry(self):
+    print('にゃー')
+
+class snakeClass(animalBaseClass):
+  def __init__(self):
+    snakeLegs = 0
+    super().__init__(snakeLegs)
+    print('蛇です')
+
+wanko = dogClass()
+print(wanko.walk())
+print(wanko.cry())
+
+chachamaru = catClass(4)
+print(chachamaru.walk())
+print(chachamaru.cry())
+print(chachamaru.getLegsNum())
+
+nyoro = snakeClass()
+print(nyoro.getLegsNum())
