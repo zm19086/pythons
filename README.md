@@ -26,7 +26,7 @@ git remote add origin https://github.com/zm19086/pythons.git
 作業を始める前に毎回行う操作 ▼
 
 git checkout -b (ブランチ名)
-*ブランチ名はなんでもいい -> 例）git checkout -b work1
+*ブランチ名はなんでもいい -> 例) git checkout -b work1
 *ブランチ名の最後に数字をつけると管理が楽　次の開発の時は work2 など
 
 
@@ -34,8 +34,10 @@ git checkout -b (ブランチ名)
 作業が終わったら毎回行う操作 ▼
 
 git add .
+->      ^ ここのドット(.)を忘れずに！
 
 git commit -m "変更内容"
+-> 例) git commit -m "chenge sample_folder/class.py line 4"
 
 git push origin (その時のブランチ名)
 ＊その時のブランチ名を確認するには　git branch を入力し、緑色で表示されているところが今のブランチ
