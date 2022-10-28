@@ -17,7 +17,7 @@
 
 一番最初のみ行う操作 ▼
 
-git clone https://github.com/zm19086/pythons.git
+git clone -b work1 https://github.com/zm19086/pythons.git
 
 git remote add origin https://github.com/zm19086/pythons.git
 
