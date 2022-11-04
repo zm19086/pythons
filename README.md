@@ -51,3 +51,49 @@ git checkout main
 git pull origin main
 
 git checkout (その時のブランチ名)
+
+
+
+pushできない時 ▼  (コンフリクトエラー時)
+
+解決法１
+git pull origin main
+↓
+git status
+↓
+git status を参考に、手動でコンフリクト解消
+↓
+git add <コンフリクト解消したファイル>
+↓
+git commit -m "コミットメッセージ"
+↓
+git push
+
+
+解決法２
+git pull などによりマージが始まっている場合
+↓
+git merge --abort
+↓
+git rebase origin/main
+
+
+
+git pull などによりマージが始まっていない場合
+↓
+git pull --rebase
+
+解決法３
+git status <- マージ始まってるか確認
+
+まだ誰もpullしていない(マージされていない)場合
+git push -f
+
+pullなどによりマージが始まっている場合
+git merge --abort
+
+git reset
+
+git commit -m "コミットメッセージ"
+
+git push -f origin main
