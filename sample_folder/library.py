@@ -23,6 +23,6 @@ print(now.strftime('%Y-%m-%d %H:%M:%S'))
 from datetime import date, timedelta
 today = date.today()
 print(today)
-one_week = timedelta(days = 7)
+one_week = timedelta(days = 14)
 print(today + one_week)
 print(today - one_week)
