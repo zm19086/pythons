@@ -109,8 +109,6 @@ def enemyTurn(num, enemy, me):
 
 def pokemonBattle(me, enemy):
   
-  # check()
-  
   if (check() == True):
   
     myHp = me.hitPoint()
@@ -132,6 +130,7 @@ def pokemonBattle(me, enemy):
         break
       
       print(me.getName() + '(' + str(myHp) + ')' + '  ' + enemy.getName() + '(' + str(enemyHp) + ')')
+      
   else:
     return
 
