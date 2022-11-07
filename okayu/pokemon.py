@@ -32,8 +32,20 @@ yadon = pokemon('ヤドン', 58, 11, 8, 6)
 
 pokemonList = [kodakku, sonansu, pikachu, mukkuru, yadon]
 
+# インスタンス化したポケモンの数だけ候補として表示する処理
+def msg1():
+  print('仲間にしたいポケモンの番号をを入力してください。(半角数字)')
+  for i in range(len(pokemonList)):
+    print(str(i + 1) + ': ' + pokemonList[i].getName())
+
+def msg2():
+  print('戦いたいポケモンの番号をを入力してください。(半角数字)')
+  for i in range(len(pokemonList)):
+    print(str(i + 1) + ': ' + pokemonList[i].getName())
+
+# 選んだ味方と相手でバトルを開始してもいいのかをユーザに確認してもらう処理
 def check():
-  result = input('味方は' + str(myPokemon.getName())+ '、相手は' + str(enemyPokemon.getName()) + 'でよろしいですか？\nYES -> y\nNo -> n\n=> ')
+  result = input('味方は' + myPokemon.getName() + '、相手は' + enemyPokemon.getName() + 'でよろしいですか？\nYES -> y\nNo -> n\n=> ')
   if (str.lower(result) == 'y'):
     print('========================================')
     print('バトルを開始します。')
@@ -46,14 +58,10 @@ def check():
     print('「y」か「n」を入力してください。')
     return False
 
+# 味方のポケモンをユーザに選んでもらう処理
 def selectMyPokemon():
-  result = input('''仲間にしたいポケモンの番号をを入力してください。(半角数字)
-    1. コダック
-    2. ソーナンス
-    3. ピカチュウ
-    4. ムックル
-    5. ヤドン
-    => ''')
+  msg1()
+  result = input('=> ')
   
   for i in range(len(pokemonList)):
     if (int(result) == i + 1):
@@ -62,14 +70,10 @@ def selectMyPokemon():
       print('--------------------------------')
       return pokemonList[i]
 
+# 相手にするポケモンをユーザに選んでもらう処理
 def selectEnemyPokemon():
-  result = input('''戦いたいポケモンの番号をを入力してください。(半角数字)
-    1 : コダック
-    2 : ソーナンス
-    3 : ピカチュウ
-    4 : ムックル
-    5 : ヤドン
-    => ''')
+  msg2()
+  result = input('=> ')
   
   for i in range(len(pokemonList)):
     if (int(result) == i + 1):
@@ -78,6 +82,7 @@ def selectEnemyPokemon():
       print('--------------------------------')
       return pokemonList[i]
 
+# 引数に渡された乱数(num)によって「命中」「急所」「不発」を決めて、ダメージ計算結果を返す処理
 def attack(num, offense, defense):
   if (num >= offense.aim()):
     result = defense - offense.attack()
@@ -89,6 +94,7 @@ def attack(num, offense, defense):
     result = defense - 0
     return result
 
+# 引数に渡された乱数(num)によって「命中」「急所」「不発」を決めて、結果に応じたメッセージを表示する処理
 def myTurn(num, me, enemy):
   if (num >= me.aim()):
     print(me.getName() + 'は' + enemy.getName() + 'に、' + str(me.attack()) + 'ダメージを あたえた！')
@@ -107,6 +113,7 @@ def enemyTurn(num, enemy, me):
   else:
     print(enemyPokemon.getName() + 'は こうげきを はずした！')
 
+# ポケモンバトルを行う処理
 def pokemonBattle(me, enemy):
   
   if (check() == True):
