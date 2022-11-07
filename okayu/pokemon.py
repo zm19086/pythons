@@ -30,8 +30,53 @@ pikachu = pokemon('ピカチュウ', 50, 15, 5, 1)
 mukkuru = pokemon('ムックル', 45, 18, 7, 1)
 yadon = pokemon('ヤドン', 58, 11, 8, 6)
 
-myPokemon = kodakku
-enemyPokemon = mukkuru
+pokemonList = [kodakku, sonansu, pikachu, mukkuru, yadon]
+
+def check():
+  result = input('味方は' + str(myPokemon.getName())+ '、相手は' + str(enemyPokemon.getName()) + 'でよろしいですか？\nYES -> y\nNo -> n\n=> ')
+  if (str.lower(result) == 'y'):
+    print('========================================')
+    print('バトルを開始します。')
+    print('========================================')
+    return True
+  elif (str.lower(result) == 'n'):
+    print('選び直してください')
+    return False
+  else:
+    print('「y」か「n」を入力してください。')
+    return False
+
+def selectMyPokemon():
+  result = input('''仲間にしたいポケモンの番号をを入力してください。(半角数字)
+    1. コダック
+    2. ソーナンス
+    3. ピカチュウ
+    4. ムックル
+    5. ヤドン
+    => ''')
+  
+  for i in range(len(pokemonList)):
+    if (int(result) == i + 1):
+      print('--------------------------------')
+      print(str(pokemonList[i].getName()) + 'が仲間になった！')
+      print('--------------------------------')
+      return pokemonList[i]
+
+def selectEnemyPokemon():
+  result = input('''戦いたいポケモンの番号をを入力してください。(半角数字)
+    1 : コダック
+    2 : ソーナンス
+    3 : ピカチュウ
+    4 : ムックル
+    5 : ヤドン
+    => ''')
+  
+  for i in range(len(pokemonList)):
+    if (int(result) == i + 1):
+      print('--------------------------------')
+      print(str(pokemonList[i].getName()) + 'があらわれた！')
+      print('--------------------------------')
+      return pokemonList[i]
 
 def attack(num, offense, defense):
   if (num >= offense.aim()):
@@ -63,24 +108,34 @@ def enemyTurn(num, enemy, me):
     print(enemyPokemon.getName() + 'は こうげきを はずした！')
 
 def pokemonBattle(me, enemy):
-  myHp = me.hitPoint()
-  enemyHp = enemy.hitPoint()
-  while (True):
-    
-    ransu = random.randint(1, 10)
-    myTurn(ransu, me, enemy)
-    enemyHp = attack(ransu, me, enemyHp)
-    if (enemyHp <= 0):
-      print(enemy.getName() + 'との しょうぶに かった！')
-      break
-    
-    ransu = random.randint(1, 10)
-    enemyTurn(ransu, enemy, me)
-    myHp = attack(ransu, enemy, myHp)
-    if (myHp <= 0):
-      print(enemy.getName() + 'との しょうぶに まけた...')
-      break
-    
-    print(me.getName() + '(' + str(myHp) + ')' + '  ' + enemy.getName() + '(' + str(enemyHp) + ')')
+  
+  # check()
+  
+  if (check() == True):
+  
+    myHp = me.hitPoint()
+    enemyHp = enemy.hitPoint()
+    while (True):
+      
+      ransu = random.randint(1, 10)
+      myTurn(ransu, me, enemy)
+      enemyHp = attack(ransu, me, enemyHp)
+      if (enemyHp <= 0):
+        print(enemy.getName() + 'との しょうぶに かった！')
+        break
+      
+      ransu = random.randint(1, 10)
+      enemyTurn(ransu, enemy, me)
+      myHp = attack(ransu, enemy, myHp)
+      if (myHp <= 0):
+        print(enemy.getName() + 'との しょうぶに まけた...')
+        break
+      
+      print(me.getName() + '(' + str(myHp) + ')' + '  ' + enemy.getName() + '(' + str(enemyHp) + ')')
+  else:
+    return
 
+
+myPokemon = selectMyPokemon()
+enemyPokemon = selectEnemyPokemon()
 pokemonBattle(myPokemon, enemyPokemon)
