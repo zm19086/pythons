@@ -87,3 +87,17 @@ string = 'nikuman'
 print(dir(string))
 # 引数を渡さなければ、そのファイル内の変数、関数も返してくれる
 print(dir())
+
+# 文字列型に変更する関数 str()
+# print文では、数値型(int)と文字列型(str)を一緒にするとエラーになる
+# print('aiueo' + 123) <= エラーが起きる
+print('aiueo' + str(123))
+
+# 数値型に変更する関数 int()
+result = '100' # <= 文字列型にしておく
+# print(result + 50) <= エラーが起きる
+print(int(result) + 50)
+
+# ユーザの入力データを取得する関数 input()
+data = input('何か入力してください => ')
+print('あなたが入力したのは' + str(data) + 'です。')
