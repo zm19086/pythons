@@ -46,11 +46,11 @@
 
 最新の状態に更新する時 ▼  (※要検証)
 
-  git checkout main
+  git fetch origin main
 
-  git pull origin main
+  (git diff (現在のブランチ名) origin/main) <- 差分の確認用コマンド
 
-  git checkout (その時のブランチ名)
+  git merge origin/main
 
 
 
