@@ -3,9 +3,11 @@
 # 3-1
 # 変数 number に「55」を代入して表示
 
-
+number = 55
+print(number)
 
 # 3-2
 # 変数 moji に 「ねむい」を代入して表示
 
-
+moji = 'ねむい'
+print(moji)
