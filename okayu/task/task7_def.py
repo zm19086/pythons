@@ -9,8 +9,8 @@ def calc(a, b):
 calc(3, 4)
 
 # 文字列の中の特定の文字の数を返す関数
-# 関数charaCountを定義する
-# 文字列は「josai univercity」
+# 変数stringを定義し、文字列'josai univercity'を代入する
+# 関数charaCountを定義する(第一引数に数える文字列、第二引数に数える文字)
 # 数える文字は「i」
 
 string = 'josai univercity'
